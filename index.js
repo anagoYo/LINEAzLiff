@@ -13,11 +13,8 @@ window.onload = function (e) {
 function sendMessage(){
     liff.sendMessages([
         {
-            "type": "flex",
-            "contents": {
-                "type": "image",
-                "url": "https://stickershop.line-scdn.net/products/0/0/1/19134836/android/stickers/492435199.png"
-            }
+            "type": "image",
+            "originalContentUrl": "https://stickershop.line-scdn.net/products/0/0/1/19134836/android/animation/492435199.png"
         },
     ])
 }

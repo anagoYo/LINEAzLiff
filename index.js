@@ -13,9 +13,25 @@ window.onload = function (e) {
 function sendMessage(){
     liff.sendMessages([
         {
-            "type": "image",
-            "originalContentUrl": "https://stickershop.line-scdn.net/products/0/0/1/19134836/android/animation/492435199.png",
-            "previewImageUrl": "https://stickershop.line-scdn.net/products/0/0/1/19134836/android/animation/492435199.png"
+            "type": "flex",
+            "altText": "this is a flex message",
+            "contents": {
+                "type": "bubble",
+                "body": {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [
+                        {
+                            "type": "text",
+                            "text": "hello"
+                        },
+                        {
+                            "type": "text",
+                            "text": "world"
+                        }
+                    ]
+                }
+            }
         },
     ]).then(function () {
         liff.closeWindow();

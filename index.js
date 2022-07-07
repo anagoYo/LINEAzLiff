@@ -14,16 +14,26 @@ function sendMessage(){
     liff.sendMessages([
         {
             "type": "flex",
-            "altText": "flexMessageです",
+            "altText": "this is a flex message",
             "contents": {
-                "type": "bubble",
-                "body": {
-                    "type": "image",
-                    "url": "https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/488939/b9b1f3c9-b8bc-eaa4-5d75-4868ee3f1fbd.png",
-                    "animated": true
+              "type": "bubble",
+              "body": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "hello"
+                  },
+                  {
+                    "type": "text",
+                    "text": "world"
+                  }
+                ]
               }
             }
-        },
+          }
+          ,
     ]).then(function () {
         liff.closeWindow();
     }).catch(function (error) {

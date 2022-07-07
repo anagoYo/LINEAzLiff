@@ -30,7 +30,7 @@ function sendMessage(){
                     },
                     {
                         "type": "image",
-                        "url": "https://stickershop.line-scdn.net/products/0/0/1/19134836/android/animation/492435199.png",
+                        "url": "https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/488939/b9b1f3c9-b8bc-eaa4-5d75-4868ee3f1fbd.png",
                         "animated": true
                     }
                 ]

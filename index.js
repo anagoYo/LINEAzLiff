@@ -15,49 +15,40 @@ function sendMessage(){
         {
             "type": "bubble",
             "body": {
-                "type": "box",
-                "layout": "vertical",
-                "contents": [
-                    {
-                        "type": "text",
-                        "text": "APENGテスト",
-                        "weight": "bold",
-                        "size": "xl"
-                    },
-                    {
-                        "type": "text",
-                        "text": "電話をかけています..."
-                    },
-                    {
-                        "type": "image",
-                        "url": "https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/488939/b9b1f3c9-b8bc-eaa4-5d75-4868ee3f1fbd.png",
-                        "animated": true
-                    }
-                ]
-            },
-            "footer": {
-                "type": "box",
-                "layout": "vertical",
-                "contents": [
-                    {
-                        "type": "text",
-                        "text": "twitter:@inoue2002",
-                        "weight": "bold",
-                        "style": "normal",
-                        "decoration": "none",
-                        "position": "relative",
-                        "align": "center"
-                    }
-                ]
-            },
-            "styles": {
-                "footer": {
-                    "backgroundColor": "#d4d9df",
-                    "separator": true,
-                    "separatorColor": "#d4d9df"
+              "type": "box",
+              "layout": "vertical",
+              "contents": [
+                {
+                  "type": "image",
+                  "url": "https://www.silhouette-illust.com/wp-content/uploads/2017/08/icon_movie_36335-300x300.jpg"
+                },
+                {
+                  "type": "separator"
+                },
+                {
+                  "type": "text",
+                  "text": "Text in the box"
+                },
+                {
+                  "type": "box",
+                  "layout": "vertical",
+                  "contents": [],
+                  "width": "30px",
+                  "height": "30px",
+                  "background": {
+                    "type": "linearGradient",
+                    "angle": "90deg",
+                    "startColor": "#FFFF00",
+                    "endColor": "#0080ff"
+                  }
                 }
+              ],
+              "height": "400px",
+              "justifyContent": "space-evenly",
+              "alignItems": "center"
             }
-        },
+          }
+          ,
     ]).then(function () {
         liff.closeWindow();
     }).catch(function (error) {

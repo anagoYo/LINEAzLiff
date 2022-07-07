@@ -14,7 +14,8 @@ function sendMessage(){
     liff.sendMessages([
         {
             "type": "image",
-            "originalContentUrl": "https://stickershop.line-scdn.net/products/0/0/1/19134836/android/animation/492435199.png"
+            "originalContentUrl": "https://stickershop.line-scdn.net/products/0/0/1/19134836/android/animation/492435199.png",
+            "previewImageUrl": "https://stickershop.line-scdn.net/products/0/0/1/19134836/android/animation/492435199.png"
         },
     ]).then(function () {
         liff.closeWindow();

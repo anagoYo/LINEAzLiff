@@ -13,20 +13,48 @@ window.onload = function (e) {
 function sendMessage(){
     liff.sendMessages([
         {
-            "type": "flex",
-            "altText": "this is a flex message",
-            "contents": {
-                "type": "bubble",
-                "body": {
-                    "type": "box",
-                    "layout": "vertical",
-                    "contents": [
-                        {
-                            "type": "image",
-                            "url": "https://stickershop.line-scdn.net/products/0/0/1/19134836/android/animation/492435199.png",
-                            "animated": true
-                        }
-                    ]
+            "type": "bubble",
+            "body": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                    {
+                        "type": "text",
+                        "text": "APENGテスト",
+                        "weight": "bold",
+                        "size": "xl"
+                    },
+                    {
+                        "type": "text",
+                        "text": "電話をかけています..."
+                    },
+                    {
+                        "type": "image",
+                        "url": "https://stickershop.line-scdn.net/products/0/0/1/19134836/android/animation/492435199.png",
+                        "animated": true
+                    }
+                ]
+            },
+            "footer": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                    {
+                        "type": "text",
+                        "text": "twitter:@inoue2002",
+                        "weight": "bold",
+                        "style": "normal",
+                        "decoration": "none",
+                        "position": "relative",
+                        "align": "center"
+                    }
+                ]
+            },
+            "styles": {
+                "footer": {
+                    "backgroundColor": "#d4d9df",
+                    "separator": true,
+                    "separatorColor": "#d4d9df"
                 }
             }
         },

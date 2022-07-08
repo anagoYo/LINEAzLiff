@@ -1,4 +1,10 @@
 window.onload = function (e) {
+    const type = getParam("type")
+    const packageId = getParam("packageId")
+    const stickerId = getParam("stickerId")
+    console.log(type)
+    console.log(packageId)
+    console.log(stickerId)
     liff.init({
         liffId: '1657284809-ew3YylaE'
     }).then(() => {

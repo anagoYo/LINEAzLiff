@@ -24,6 +24,7 @@ function sendMessage(){
                   {
                     "type": "image",
                     "url": "https://stickershop.line-scdn.net/products/0/0/1/19134836/android/animation/492435199.png",
+                    "size": "full",
                     "animated": true
                   }
                 ]

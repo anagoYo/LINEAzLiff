@@ -59,10 +59,9 @@ function share(){
                 }
             }
         },
-    ])
-    .then(
-        alert("ShareTargetPicker was launched")
-    ).catch(function(res) {
-        alert("Failed to launch ShareTargetPicker")
-    })
+    ]).then(function () {
+        liff.closeWindow();
+    }).catch(function (error) {
+        alert("Failed to launch ShareTargetPicker: "+ error.message)
+    });
 }

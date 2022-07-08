@@ -1,13 +1,3 @@
-function getParam(name, url) {
-    if (!url) url = window.location.href;
-    name = name.replace(/[\[\]]/g, "\\$&");
-    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-        results = regex.exec(url);
-    if (!results) return null;
-    if (!results[2]) return '';
-    return decodeURIComponent(results[2].replace(/\+/g, " "));
-}
-
 window.onload = function (e) {
     liff.init({
         liffId: '1657284809-ew3YylaE'
@@ -20,10 +10,26 @@ window.onload = function (e) {
     });
 };
 
-function share(){
-    const type = getParam("type")
-    const packageId = getParam("packageId")
-    const stickerId = getParam("stickerId")
+function getParam(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
+function share(type, packageId, stickerId){
+    if(type == null){
+        type = getParam("type")
+    }
+    if(packageId == null){
+        packageId = getParam("packageId")
+    }
+    if(stickerId == null){
+        stickerId = getParam("stickerId")
+    }
     var url = "";
     var animated = false
     if(type == "static"){
@@ -37,7 +43,7 @@ function share(){
     liff.shareTargetPicker([
         {
             "type": "flex",
-            "altText": "AzSticker",
+            "altText": "Azarasi Big Sticker",
             "contents": {
               "type": "bubble",
               "body": {

@@ -9,12 +9,6 @@ function getParam(name, url) {
 }
 
 window.onload = function (e) {
-    const type = getParam("type")
-    const packageId = getParam("packageId")
-    const stickerId = getParam("stickerId")
-    console.log(type)
-    console.log(packageId)
-    console.log(stickerId)
     liff.init({
         liffId: '1657284809-ew3YylaE'
     }).then(() => {
@@ -37,9 +31,9 @@ function share(){
     }else if(type == "animation"){
         animated = true;
         url = "https://stickershop.line-scdn.net/products/0/0/1/"+packageId+"/android/animation/"+stickerId+".png"
+    }else{
+        url = "https://stickershop.line-scdn.net/products/0/0/1/"+packageId+"/android/stickers/"+stickerId+".png"
     }
-    alert(url)
-    alert(animated)
     liff.shareTargetPicker([
         {
             "type": "flex",

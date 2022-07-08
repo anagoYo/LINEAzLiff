@@ -23,7 +23,8 @@ function sendMessage(){
                 "contents": [
                   {
                     "type": "image",
-                    "url": "https://stickershop.line-scdn.net/products/0/0/1/19134836/android/stickers/492435199.pnga"
+                    "url": "https://stickershop.line-scdn.net/products/0/0/1/19134836/android/stickers/492435199.png",
+                    "animated": true
                   }
                 ]
               }

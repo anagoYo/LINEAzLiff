@@ -32,8 +32,8 @@ function share(){
         animated = true;
         url = "https://stickershop.line-scdn.net/products/0/0/1/"+packageId+"/android/animation/"+stickerId+".png"
     }
-    console.log(url)
-    console.log(animated)
+    alert(url)
+    alert(animated)
     liff.shareTargetPicker([
         {
             "type": "flex",

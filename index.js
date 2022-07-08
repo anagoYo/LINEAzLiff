@@ -22,12 +22,8 @@ function sendMessage(){
                 "layout": "vertical",
                 "contents": [
                   {
-                    "type": "text",
-                    "text": "hello"
-                  },
-                  {
-                    "type": "text",
-                    "text": "world"
+                    "type": "image",
+                    "url": "https://stickershop.line-scdn.net/products/0/0/1/19134836/android/stickers/492435199.pnga"
                   }
                 ]
               }

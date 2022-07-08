@@ -10,35 +10,28 @@ window.onload = function (e) {
     });
 };
 
-function sendMessage(){
-    liff.sendMessages([
-        {
-            "type": "flex",
-            "altText": "AzSticker",
-            "contents": {
-              "type": "bubble",
-              "body": {
-                "type": "box",
-                "layout": "vertical",
-                "contents": [
-                  {
-                    "type": "image",
-                    "url": "https://stickershop.line-scdn.net/products/0/0/1/19134836/android/animation/492435199.png",
-                    "size": "full",
-                    "animated": true
-                  }
-                ]
-              }
-            }
-          },
-    ]).then(function () {
-        liff.closeWindow();
-    }).catch(function (error) {
-        window.alert('Error sending message: ' + error.message);
-    });
+function getParam(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 
 function share(){
+    const type = getParam("type")
+    const packageId = getParam("packageId")
+    const stickerId = getParam("stickerId")
+    var url = "";
+    var animated = false
+    if(type == "static"){
+        url = "https://stickershop.line-scdn.net/products/0/0/1/"+packageId+"/android/stickers/"+stickerId+".png"
+    }else if(type == "animation"){
+        animated = true;
+        url = "https://stickershop.line-scdn.net/products/0/0/1/"+packageId+"/android/animation/"+stickerId+".png"
+    }
     liff.shareTargetPicker([
         {
             "type": "flex",
@@ -51,9 +44,9 @@ function share(){
                 "contents": [
                     {
                         "type": "image",
-                        "url": "https://stickershop.line-scdn.net/products/0/0/1/19134836/android/animation/492435199.png",
+                        "url": url,
                         "size": "full",
-                        "animated": true
+                        "animated": animated
                     }
                     ]
                 }

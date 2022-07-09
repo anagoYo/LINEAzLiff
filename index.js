@@ -63,7 +63,12 @@ function share(type, packageId, stickerId){
                         "type": "image",
                         "url": url,
                         "size": "full",
-                        "animated": animated
+                        "animated": animated,
+                        "action": {
+                            "type": "uri",
+                            "label": "スタンプ",
+                            "uri": "https://line.me/R/shop/sticker/detail/"+packageId
+                        }
                     }
                     ]
                 }
@@ -133,6 +138,6 @@ function sendMessage(){
     ]).then(function () {
         liff.closeWindow();
     }).catch(function (error) {
-        alert("Failed to launch ShareTargetPicker　: "+ error.message)
+        alert("Failed to launch ShareTargetPicker : "+ error.message)
     });
 }

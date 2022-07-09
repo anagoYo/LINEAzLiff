@@ -63,14 +63,17 @@ function share(type, packageId, stickerId){
     ]).then(function () {
         liff.closeWindow();
     }).catch(function (error) {
-        alert("Failed to launch ShareTargetPicker: "+ error.message)
+        alert("Failed to launch ShareTargetPicker　: "+ error.message)
     });
 }
 
 function select(){
+    console.log("select")
     var packageId = window.prompt("パッケージIDを入力してください", "");
+    console.log(packageId)
     fetch("https://stickershop.line-scdn.net/products/0/0/1/"+packageId+"/android/productInfo.meta").then((response) => {
         json = response.json()
+        console.log(json)
         for (var sticker in json.stickers){
             console.log(sticker)
             var stickerId = sticker["id"]

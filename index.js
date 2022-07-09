@@ -84,8 +84,8 @@ function select(){
             img.id = stickerId
             img.src = "https://stickershop.line-scdn.net/products/0/0/1/"+packageId+"/android/stickers/"+stickerId+".png"
 
-            img.onclick = function() {
-                share("static", packageId, stickerId)
+            img.onclick = function(this) {
+                share("static", packageId, img.id)
             };
             document.getElementById("stickers").appendChild(img)
         }

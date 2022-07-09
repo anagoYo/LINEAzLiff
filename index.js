@@ -23,12 +23,21 @@ function getParam(name, url) {
 function share(type, packageId, stickerId){
     if(type == null){
         type = getParam("type")
+        if(type == null){
+            type = "static"   
+        }
     }
     if(packageId == null){
         packageId = getParam("packageId")
+        if(packageId == null){
+            return;
+        }
     }
     if(stickerId == null){
         stickerId = getParam("stickerId")
+        if(stickerId == null){
+            return;
+        }
     }
     var url = "";
     var animated = false
@@ -85,7 +94,7 @@ function select(){
             img.src = "https://stickershop.line-scdn.net/products/0/0/1/"+packageId+"/android/stickers/"+stickerId+".png"
 
             img.onclick = function() {
-                share("static", packageId, img.id)
+                share(null, packageId, img.id)
             };
             document.getElementById("stickers").appendChild(img)
         }

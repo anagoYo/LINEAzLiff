@@ -71,7 +71,8 @@ function select(){
     var packageId = window.prompt("パッケージIDを入力してください", "");
     fetch("https://stickershop.line-scdn.net/products/0/0/1/"+packageId+"/android/productInfo.meta").then((response) => {
         json = response.json()
-        for (var sticker in json["stickers"]){
+        for (var sticker in json.stickers){
+            console.log(sticker)
             var stickerId = sticker["id"]
             const img = document.createElement("img")
             img.id = stickerId

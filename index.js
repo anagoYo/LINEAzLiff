@@ -116,17 +116,24 @@ function sendMessage(){
             "type": "flex",
             "altText": "Azarasi Custom Message",
             "contents": {
-              "type": "bubble",
-              "body": {
-                "type": "box",
-                "layout": "vertical",
-                "backgroundColor": "#C3F69D",
-                "contents": [
-                    {
-                        "type": "text",
-                        "text": message
-                    }
-                    ]
+                "type": "bubble",
+                "body": {
+                    "type": "box",
+                    "layout": "baseline",
+                    "contents": [
+                        {
+                            "type": "text",
+                            "text": "あいうえおかきくけこさしすせそたちつてと",
+                            "size": "5xl",
+                            "margin": "xxl",
+                            "weight": "bold",
+                            "align": "center",
+                            "gravity": "center",
+                            "wrap": true
+                        }
+                    ],
+                    "backgroundColor": "#C3F69D",
+                    "paddingAll": "xxl"
                 }
             }
         },

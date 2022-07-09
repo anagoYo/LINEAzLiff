@@ -78,12 +78,7 @@ function select(){
             img.src = "https://stickershop.line-scdn.net/products/0/0/1/"+packageId+"/android/stickers/"+stickerId+".png"
 
             img.onclick = function() {
-                type = window.confirm("画像を送りたい場合はOK, アニメーションを送りたい場合はキャンセルを押してください。");
-                if(type){
-                    share("static", packageId, stickerId)
-                }else{
-                    share("animation", packageId, stickerId)
-                }
+                share("static", packageId, stickerId)
             };
             document.getElementById("stickers").appendChild(img)
         }

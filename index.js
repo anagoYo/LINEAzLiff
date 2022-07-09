@@ -66,3 +66,28 @@ function share(type, packageId, stickerId){
         alert("Failed to launch ShareTargetPicker　: "+ error.message)
     });
 }
+
+function select(){
+    var packageId = window.prompt("パッケージIDを入力してください", "");
+    fetch("https://stickershop.line-scdn.net/products/0/0/1/"+packageId+"/android/productInfo.meta").then((response) => {
+        json = response.json()
+        for (var sticker in json["stickers"]){
+            var stickerId = sticker["id"]
+            const img = document.createElement("img")
+            img.id = stickerId
+            img.src = "https://stickershop.line-scdn.net/products/0/0/1/"+packageId+"/android/stickers/"+stickerId+".png"
+
+            img.onclick = function() {
+                type = window.confirm("画像を送りたい場合はOK, アニメーションを送りたい場合はキャンセルを押してください。");
+                if(type){
+                    share("static", packageId, stickerId)
+                }else{
+                    share("animation", packageId, stickerId)
+                }
+            };
+            document.getElementById("stickers").appendChild(img)
+        }
+    }).catch((error) => {
+        alert(error)
+    });
+}

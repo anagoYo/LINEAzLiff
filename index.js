@@ -77,14 +77,14 @@ function select(){
     .then((result) => {
         console.log(result)
         for (var sticker in result["stickers"]){
-            console.log(sticker)
+            console.log(sticker[1])
             var stickerId = sticker["id"]
             const img = document.createElement("img")
             img.id = stickerId
             img.src = "https://stickershop.line-scdn.net/products/0/0/1/"+packageId+"/android/stickers/"+stickerId+".png"
 
             img.onclick = function() {
-                share("static", packageId, stickerId)
+                share("static", packageId, img.id)
             };
             document.getElementById("stickers").appendChild(img)
         }

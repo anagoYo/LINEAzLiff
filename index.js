@@ -103,3 +103,29 @@ function select(){
         alert(error)
     });
 }
+
+function sendMessage(){
+    liff.shareTargetPicker([
+        {
+            "type": "flex",
+            "altText": "Azarasi Custom Message",
+            "contents": {
+              "type": "bubble",
+              "body": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                    {
+                        "type": "text",
+                        "text": "Hello World. こんにちは～！"
+                    }
+                    ]
+                }
+            }
+        },
+    ]).then(function () {
+        liff.closeWindow();
+    }).catch(function (error) {
+        alert("Failed to launch ShareTargetPicker　: "+ error.message)
+    });
+}

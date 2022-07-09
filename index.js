@@ -72,9 +72,11 @@ function select(){
     var packageId = window.prompt("パッケージIDを入力してください", "");
     console.log(packageId)
     fetch("https://stickershop.line-scdn.net/products/0/0/1/"+packageId+"/android/productInfo.meta").then((response) => {
-        json = response.json()
-        console.log(json)
-        for (var sticker in json.stickers){
+        return response.json()
+    })
+    .then((result) => {
+        console.log(result)
+        for (var sticker in result["stickers"]){
             console.log(sticker)
             var stickerId = sticker["id"]
             const img = document.createElement("img")
@@ -86,7 +88,8 @@ function select(){
             };
             document.getElementById("stickers").appendChild(img)
         }
-    }).catch((error) => {
+    })
+    .catch((error) => {
         alert(error)
     });
 }

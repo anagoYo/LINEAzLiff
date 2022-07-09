@@ -123,7 +123,7 @@ function sendMessage(){
                     "contents": [
                         {
                             "type": "text",
-                            "text": "あいうえおかきくけこさしすせそたちつてと",
+                            "text": message,
                             "size": "5xl",
                             "margin": "xxl",
                             "weight": "bold",

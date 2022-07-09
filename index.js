@@ -55,22 +55,16 @@ function share(type, packageId, stickerId){
             "altText": "Azarasi Big Sticker",
             "contents": {
               "type": "bubble",
-              "body": {
-                "type": "box",
-                "layout": "vertical",
-                "contents": [
-                    {
-                        "type": "image",
-                        "url": url,
-                        "size": "full",
-                        "animated": animated,
-                        "action": {
-                            "type": "uri",
-                            "label": "スタンプ",
-                            "uri": "https://line.me/R/shop/sticker/detail/"+packageId
-                        }
+              "hero": {
+                    "type": "image",
+                    "url": url,
+                    "size": "full",
+                    "animated": animated,
+                    "action": {
+                        "type": "uri",
+                        "uri": "https://line.me/R/shop/sticker/detail/"+packageId,
+                        "label": "shop"
                     }
-                    ]
                 }
             }
         },

@@ -78,7 +78,7 @@ function share(type, packageId, stickerId){
 
 function select(){
     console.log("select")
-    var packageId = window.prompt("パッケージIDを入力してください", "");
+    var packageId = window.prompt("パッケージIDを入力してください。", "");
     console.log(packageId)
     fetch("https://stickershop.line-scdn.net/products/0/0/1/"+packageId+"/android/productInfo.meta").then((response) => {
         return response.json()
@@ -105,6 +105,13 @@ function select(){
 }
 
 function sendMessage(){
+    var message = getParam("message")
+    if(message == null){
+        message = window.prompt("メッセージを入力してください。", "");
+        if(message == null){
+            return;
+        }
+    }
     liff.shareTargetPicker([
         {
             "type": "flex",
@@ -117,7 +124,7 @@ function sendMessage(){
                 "contents": [
                     {
                         "type": "text",
-                        "text": "Hello World. こんにちは～！"
+                        "text": message
                     }
                     ]
                 }

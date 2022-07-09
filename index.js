@@ -77,7 +77,7 @@ function select(){
     .then((result) => {
         console.log(result)
         for (var sticker in result["stickers"]){
-            console.log(sticker[1])
+            console.log(result["stickers"][sticker])
             var stickerId = sticker["id"]
             const img = document.createElement("img")
             img.id = stickerId

@@ -63,7 +63,7 @@ function share(type, packageId, stickerId){
     ]).then(function () {
         liff.closeWindow();
     }).catch(function (error) {
-        alert("Failed to launch ShareTargetPicker　: "+ error.message)
+        alert("Failed to launch ShareTargetPicker: "+ error.message)
     });
 }
 

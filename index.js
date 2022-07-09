@@ -120,6 +120,7 @@ function sendMessage(){
               "body": {
                 "type": "box",
                 "layout": "vertical",
+                "backgroundColor": "#C3F69D",
                 "contents": [
                     {
                         "type": "text",

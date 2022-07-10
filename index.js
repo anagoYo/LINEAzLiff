@@ -63,7 +63,7 @@ function share(type, packageId, stickerId){
     }
     var backgroundColor = getParam("backgroundColor")
     if (backgroundColor == null){
-        backgroundColor = "#FFFFFFFF"
+        backgroundColor = "FFFFFFFF"
     }
     var url = "";
     var animated = false
@@ -86,7 +86,7 @@ function share(type, packageId, stickerId){
                     "url": url,
                     "size": size,
                     "animated": animated,
-                    "backgroundColor": backgroundColor,
+                    "backgroundColor": "#"+backgroundColor,
                     "action": {
                         "type": "uri",
                         "uri": "https://line.me/R/shop/sticker/detail/"+packageId,
@@ -159,11 +159,11 @@ function sendMessage(){
     }
     var textColor = getParam("textColor")
     if(textColor == null){
-        textColor = "#000000FF"
+        textColor = "000000FF"
     }
     var backgroundColor = getParam("backgroundColor")
     if(backgroundColor == null){
-        backgroundColor = "#C3F69D"
+        backgroundColor = "C3F69D"
     }
     liff.shareTargetPicker([
         {
@@ -174,13 +174,13 @@ function sendMessage(){
                 "body": {
                     "type": "box",
                     "layout": "baseline",
-                    "backgroundColor": backgroundColor,
+                    "backgroundColor": "#"+backgroundColor,
                     "contents": [
                         {
                             "type": "text",
                             "text": message,
                             "size": size,
-                            "color": textColor,
+                            "color": "#"+textColor,
                             "margin": "xxl",
                             "weight": "bold",    
                             "wrap": true

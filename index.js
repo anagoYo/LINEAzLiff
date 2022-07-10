@@ -182,9 +182,7 @@ function sendMessage(){
                             "size": size,
                             "color": textColor,
                             "margin": "xxl",
-                            "weight": "bold",
-                            "align": "center",
-                            "gravity": "center",
+                            "weight": "bold",    
                             "wrap": true
                         }
                     ],

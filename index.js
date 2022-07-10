@@ -185,8 +185,7 @@ function sendMessage(){
                             "weight": "bold",    
                             "wrap": true
                         }
-                    ],
-                    "paddingAll": "xxl"
+                    ]
                 }
             }
         },

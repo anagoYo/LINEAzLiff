@@ -39,6 +39,32 @@ function share(type, packageId, stickerId){
             return;
         }
     }
+    var size = getParam("size")
+    if(size == null){
+        size = "full"
+    }
+    if(size == "1"){
+        size = "xl"
+    }
+    if(size == "2"){
+        size = "xxl"
+    }
+    if(size == "3"){
+        size = "3xl"
+    }
+    if(size == "4"){
+        size = "4xl"
+    }
+    if(size == "5"){
+        size = "5xl"
+    }
+    if(size == "6"){
+        size = "full"
+    }
+    var backgroundColor = getParam("backgroundColor")
+    if (backgroundColor == null){
+        backgroundColor = "#FFFFFFFF"
+    }
     var url = "";
     var animated = false
     if(type == "static"){
@@ -58,8 +84,9 @@ function share(type, packageId, stickerId){
               "hero": {
                     "type": "image",
                     "url": url,
-                    "size": "full",
+                    "size": size,
                     "animated": animated,
+                    "backgroundColor": backgroundColor,
                     "action": {
                         "type": "uri",
                         "uri": "https://line.me/R/shop/sticker/detail/"+packageId,
@@ -111,6 +138,33 @@ function sendMessage(){
             return;
         }
     }
+    var size = getParam("size")
+    if(size == null){
+        size = "xl"
+    }
+    if(size == "1"){
+        size = "xl"
+    }
+    if(size == "2"){
+        size = "xxl"
+    }
+    if(size == "3"){
+        size = "3xl"
+    }
+    if(size == "4"){
+        size = "4xl"
+    }
+    if(size == "5"){
+        size = "5xl"
+    }
+    var textColor = getParam("textColor")
+    if(textColor == null){
+        textColor = "#000000FF"
+    }
+    var backgroundColor = getParam("backgroundColor")
+    if(backgroundColor == null){
+        backgroundColor = "#C3F69D"
+    }
     liff.shareTargetPicker([
         {
             "type": "flex",
@@ -120,11 +174,13 @@ function sendMessage(){
                 "body": {
                     "type": "box",
                     "layout": "baseline",
+                    "backgroundColor": backgroundColor,
                     "contents": [
                         {
                             "type": "text",
                             "text": message,
-                            "size": "5xl",
+                            "size": size,
+                            "color": textColor,
                             "margin": "xxl",
                             "weight": "bold",
                             "align": "center",
@@ -132,7 +188,6 @@ function sendMessage(){
                             "wrap": true
                         }
                     ],
-                    "backgroundColor": "#C3F69D",
                     "paddingAll": "xxl"
                 }
             }

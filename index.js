@@ -222,5 +222,5 @@ function sendMessage(){
 }
 
 function setting(){
-    location = "/setting.html";
+    location = "/LINEAzLiff/setting.html";
 }

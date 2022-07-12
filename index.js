@@ -118,7 +118,7 @@ function share(packageId, stickerId){
     jsonData["contents"]["hero"]["animated"] = getLocalBool("sticker_animated", false)
 
     jsonData["contents"]["hero"]["url"] = "https://stickershop.line-scdn.net/products/0/0/1/"+packageId+"/android/"+(jsonData["contents"]["hero"]["animated"] ? "animation" : "stickers")+"/"+stickerId+".png"
-    if(is404(jsonData["contents"]["hero"]["url"])){
+    if(jsonData["contents"]["hero"]["animated"] && is404(jsonData["contents"]["hero"]["url"])){
         jsonData["contents"]["hero"]["url"] = "https://stickershop.line-scdn.net/products/0/0/1/"+packageId+"/android/stickers/"+stickerId+".png"
     }
 
@@ -167,57 +167,53 @@ function sendMessage(){
             return;
         }
     }
-    var size = getParam("size")
-    if(size == null){
-        size = "xl"
-    }
-    if(size == "1"){
-        size = "xl"
-    }
-    if(size == "2"){
-        size = "xxl"
-    }
-    if(size == "3"){
-        size = "3xl"
-    }
-    if(size == "4"){
-        size = "4xl"
-    }
-    if(size == "5"){
-        size = "5xl"
-    }
-    var textColor = getParam("textColor")
-    if(textColor == null){
-        textColor = "000000FF"
-    }
-    var backgroundColor = getParam("backgroundColor")
-    if(backgroundColor == null){
-        backgroundColor = "C3F69D"
-    }
-    liff.shareTargetPicker([
-        {
-            "type": "flex",
-            "altText": "Azarasi Custom Message",
-            "contents": {
-                "type": "bubble",
-                "body": {
-                    "type": "box",
-                    "layout": "baseline",
-                    "backgroundColor": "#"+backgroundColor,
-                    "contents": [
-                        {
-                            "type": "text",
-                            "text": message,
-                            "size": size,
-                            "color": "#"+textColor,
-                            "margin": "xxl",
-                            "weight": "bold",    
-                            "wrap": true
-                        }
-                    ]
-                }
+
+    let jsonData = {
+        "type": "flex",
+        "altText": "Azarasi Custom Message",
+        "contents": {
+            "type": "bubble",
+            "body": {
+                "type": "box",
+                "layout": "baseline",
+                "backgroundColor": "#"+backgroundColor,
+                "contents": [
+                    {
+                        "type": "text",
+                        "text": message,
+                        "weight": "bold",
+                        "wrap": true
+                    }
+                ]
             }
-        },
+        }
+    }
+
+    jsonData["contents"]["body"]["backgroundColor"] = getLocalString("text_backgroundColor", "#FFFFFF")
+
+    jsonData["contents"]["body"]["contents"]["size"] = getSizeString(getLocalInt("text_size", 0))
+    jsonData["contents"]["body"]["contents"]["color"] = getSizeString(getLocalString("text_textColor", "#000000"))
+    if(getLocalBool("text_bold", false)){
+        jsonData["contents"]["body"]["contents"]["weight"] = "bold"
+    }
+    if(getLocalBool("text_italic", false)){
+        jsonData["contents"]["body"]["contents"]["style"] = "italic"
+    }
+    if(getLocalInt("text_decoration", 0) == 1){
+        jsonData["contents"]["body"]["contents"]["decoration"] = "underline"
+    }else if(getLocalInt("text_decoration", 0) == 2){
+        jsonData["contents"]["body"]["contents"]["decoration"] = "line-through"
+    }
+    if(getLocalInt("text_align", 0) == 1){
+        jsonData["contents"]["body"]["contents"]["align"] = "start"
+    }else if(getLocalInt("text_align", 0) == 2){
+        jsonData["contents"]["body"]["contents"]["align"] = "center"
+    }else if(getLocalInt("text_align", 0) == 3){
+        jsonData["contents"]["body"]["contents"]["align"] = "end"
+    }
+
+    liff.shareTargetPicker([
+        jsonData
     ]).then(function () {
         liff.closeWindow();
     }).catch(function (error) {

@@ -5,7 +5,7 @@ window.onload = function (e) {
         if(liff.isLoggedIn()){
             liff.getProfile()
         }else{
-            liff.login()
+            //liff.login()
         }
     });
 };
@@ -96,7 +96,17 @@ function getSizeString(sizeNum){
     }
 }
 
-function share(packageId, stickerId){
+function share(json){
+    liff.shareTargetPicker([
+        json
+    ]).then(function () {
+        liff.closeWindow();
+    }).catch(function (error) {
+        alert("Failed to launch ShareTargetPicker:"+ error.message)
+    });
+}
+
+function sendSticker(packageId, stickerId){
     let jsonData = {
         "type": "flex",
         "altText": "Azarasi Big Sticker",
@@ -113,112 +123,42 @@ function share(packageId, stickerId){
         }
     }
 
-    jsonData["contents"]["hero"]["size"] = getSizeString(getLocalInt("sticker_size", 0))
-    jsonData["contents"]["hero"]["backgroundColor"] = getLocalString("sticker_backgroundColor", "#FFFFFF")
-    jsonData["contents"]["hero"]["animated"] = getLocalBool("sticker_animated", false)
+    jsonData["contents"]["hero"]["size"] = getSizeString(getLocalInt("sticker_size", 0));
+    jsonData["contents"]["hero"]["backgroundColor"] = getLocalString("sticker_backgroundColor", "#FFFFFF");
+    jsonData["contents"]["hero"]["animated"] = getLocalBool("sticker_animated", false);
 
-    jsonData["contents"]["hero"]["url"] = "https://stickershop.line-scdn.net/products/0/0/1/"+packageId+"/android/"+(jsonData["contents"]["hero"]["animated"] ? "animation" : "stickers")+"/"+stickerId+".png"
+    jsonData["contents"]["hero"]["url"] = "https://stickershop.line-scdn.net/products/0/0/1/"+packageId+"/android/"+(jsonData["contents"]["hero"]["animated"] ? "animation" : "stickers")+"/"+stickerId+".png";
     if(jsonData["contents"]["hero"]["animated"] && is404(jsonData["contents"]["hero"]["url"])){
-        jsonData["contents"]["hero"]["url"] = "https://stickershop.line-scdn.net/products/0/0/1/"+packageId+"/android/stickers/"+stickerId+".png"
+        jsonData["contents"]["hero"]["url"] = "https://stickershop.line-scdn.net/products/0/0/1/"+packageId+"/android/stickers/"+stickerId+".png";
     }
 
-    liff.shareTargetPicker([
-        jsonData
-    ]).then(function () {
-        liff.closeWindow();
-    }).catch(function (error) {
-        alert("Failed to launch ShareTargetPicker　: "+ error.message)
-    });
+    share(jsonData);
 }
 
 function select(){
-    console.log("select")
     var packageId = window.prompt("パッケージIDを入力してください。", "");
-    console.log(packageId)
+    if(packageId.length < 2){
+        return;
+    }
     fetch("https://stickershop.line-scdn.net/products/0/0/1/"+packageId+"/android/productInfo.meta").then((response) => {
         return response.json()
     })
     .then((result) => {
-        console.log(result)
         for (var sticker in result["stickers"]){
-            sticker = result["stickers"][sticker]
-            console.log(sticker)
-            var stickerId = sticker["id"]
-            const img = document.createElement("img")
-            img.id = stickerId
-            img.src = "https://stickershop.line-scdn.net/products/0/0/1/"+packageId+"/android/stickers/"+stickerId+".png"
+                        
+            var stickerId = result["stickers"][sticker]["id"];
+            const img = document.createElement("img");
+            img.id = stickerId;
+            img.src = "https://stickershop.line-scdn.net/products/0/0/1/"+packageId+"/android/stickers/"+stickerId+".png";
+
+            document.getElementById("stickers").appendChild(img);
 
             img.onclick = function() {
-                share(packageId, img.id)
-            };
-            document.getElementById("stickers").appendChild(img)
+                sendSticker(packageId, img.id);
+            }
         }
     })
     .catch((error) => {
-        alert(error)
+        alert(error);
     });
-}
-
-function sendMessage(){
-    var message = getParam("message")
-    if(message == null){
-        message = window.prompt("メッセージを入力してください。", "");
-        if(message == null){
-            return;
-        }
-    }
-
-    let jsonData = {
-        "type": "flex",
-        "altText": "Azarasi Custom Message",
-        "contents": {
-            "type": "bubble",
-            "body": {
-                "type": "box",
-                "layout": "baseline",
-                "contents": [
-                    {
-                        "type": "text",
-                        "text": message,
-                        "wrap": true
-                    }
-                ]
-            }
-        }
-    }
-
-    jsonData["contents"]["body"]["backgroundColor"] = getLocalString("text_backgroundColor", "#FFFFFF")
-
-    jsonData["contents"]["body"]["contents"]["size"] = getSizeString(getLocalInt("text_size", 0))
-    jsonData["contents"]["body"]["contents"]["color"] = getSizeString(getLocalString("text_textColor", "#000000"))
-    if(getLocalBool("text_bold", false)){
-        jsonData["contents"]["body"]["contents"]["weight"] = "bold"
-    }
-    if(getLocalBool("text_italic", false)){
-        jsonData["contents"]["body"]["contents"]["style"] = "italic"
-    }
-    if(getLocalInt("text_decoration", 0) == 1){
-        jsonData["contents"]["body"]["contents"]["decoration"] = "underline"
-    }else if(getLocalInt("text_decoration", 0) == 2){
-        jsonData["contents"]["body"]["contents"]["decoration"] = "line-through"
-    }
-    if(getLocalInt("text_align", 0) == 1){
-        jsonData["contents"]["body"]["contents"]["align"] = "start"
-    }else if(getLocalInt("text_align", 0) == 2){
-        jsonData["contents"]["body"]["contents"]["align"] = "center"
-    }else if(getLocalInt("text_align", 0) == 3){
-        jsonData["contents"]["body"]["contents"]["align"] = "end"
-    }
-
-    liff.shareTargetPicker([
-        jsonData
-    ]).then(function () {
-        liff.closeWindow();
-    }).catch(function (error) {
-        alert("Failed to launch ShareTargetPicker : "+ error.message)
-    });
-}
-
-function setting(){
-    location = "/LINEAzLiff/setting.html";
 }

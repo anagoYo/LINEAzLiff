@@ -11,7 +11,7 @@ window.onload = function (e) {
 };
 
 function bool(data) {
-    return data.toLowerCase() === "true";
+    return String(data).toLowerCase() === "true";
 }
 
 function getLocalInt(_key, _default){

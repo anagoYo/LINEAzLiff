@@ -1,15 +1,3 @@
-window.onload = function (e) {
-    liff.init({
-        liffId: '1657284809-ew3YylaE'
-    }).then(() => {
-        if(liff.isLoggedIn()){
-            liff.getProfile()
-        }else{
-            liff.login()
-        }
-    });
-};
-
 const STICKERSHOP_ENDPOINT = "https://stickershop.line-scdn.net/products/0/0/1/"
 
 function share(json){
@@ -51,7 +39,17 @@ function sendSticker(packageId, stickerId){
     share(jsonData);
 }
 
-function input_packageId(){
+function addSticker(packageId, stickerId){
+    const img = document.createElement("img");
+    img.id = stickerId;
+    img.src = STICKERSHOP_ENDPOINT+packageId+"/android/stickers/"+stickerId+".png";
+    img.onclick = function(e) {
+        sendSticker(packageId, e.target.id);
+    }
+    document.getElementById("stickers").appendChild(img);
+}
+
+function input_dialog(){
     let packageId = window.prompt("パッケージIDを入力してください。", "");
     if(packageId.length < 2){
         return;
@@ -63,18 +61,21 @@ function input_packageId(){
         for (let sticker in result["stickers"]){
                         
             let stickerId = result["stickers"][sticker]["id"];
-            const img = document.createElement("img");
-            img.id = stickerId;
-            img.src = STICKERSHOP_ENDPOINT+packageId+"/android/stickers/"+stickerId+".png";
 
-            document.getElementById("stickers").appendChild(img);
-
-            img.onclick = function() {
-                sendSticker(packageId, img.id);
-            }
+            addSticker(packageId, stickerId);
         }
     })
     .catch((error) => {
         alert(error);
     });
 }
+
+window.onload = function (e) {
+    liff.init({
+        liffId: "1657284809-ew3YylaE"
+    }).then(() => {
+        if(!liff.isLoggedIn()){
+            liff.login();
+        }
+    });
+};

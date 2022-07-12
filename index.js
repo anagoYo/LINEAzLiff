@@ -176,12 +176,10 @@ function sendMessage(){
             "body": {
                 "type": "box",
                 "layout": "baseline",
-                "backgroundColor": "#"+backgroundColor,
                 "contents": [
                     {
                         "type": "text",
                         "text": message,
-                        "weight": "bold",
                         "wrap": true
                     }
                 ]

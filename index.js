@@ -5,7 +5,7 @@ window.onload = function (e) {
         if(liff.isLoggedIn()){
             liff.getProfile()
         }else{
-            //liff.login()
+            liff.login()
         }
     });
 };
@@ -41,7 +41,7 @@ function getLocalString(_key, _default){
 function getParam(name, url) {
     if (!url) url = window.location.href;
     name = name.replace(/[\[\]]/g, "\\$&");
-    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+    let regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
         results = regex.exec(url);
     if (!results) return null;
     if (!results[2]) return '';
@@ -50,7 +50,7 @@ function getParam(name, url) {
 
 function is404(_url){
     try{
-        var xhr;
+        let xhr;
         xhr = new XMLHttpRequest();
         xhr.open("HEAD", _url, false);
         xhr.send(null);
@@ -136,7 +136,7 @@ function sendSticker(packageId, stickerId){
 }
 
 function select(){
-    var packageId = window.prompt("パッケージIDを入力してください。", "");
+    let packageId = window.prompt("パッケージIDを入力してください。", "");
     if(packageId.length < 2){
         return;
     }
@@ -144,9 +144,9 @@ function select(){
         return response.json()
     })
     .then((result) => {
-        for (var sticker in result["stickers"]){
+        for (let sticker in result["stickers"]){
                         
-            var stickerId = result["stickers"][sticker]["id"];
+            let stickerId = result["stickers"][sticker]["id"];
             const img = document.createElement("img");
             img.id = stickerId;
             img.src = "https://stickershop.line-scdn.net/products/0/0/1/"+packageId+"/android/stickers/"+stickerId+".png";

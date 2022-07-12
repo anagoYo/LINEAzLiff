@@ -50,7 +50,7 @@ function addSticker(packageId, stickerId){
 }
 
 function input_dialog(){
-    let packageId = window.prompt("パッケージIDを入力してください。", "");
+    const packageId = window.prompt("パッケージIDを入力してください。", "");
     if(packageId.length < 2){
         return;
     }
@@ -60,7 +60,7 @@ function input_dialog(){
     .then((result) => {
         for (let sticker in result["stickers"]){
                         
-            let stickerId = result["stickers"][sticker]["id"];
+            const stickerId = result["stickers"][sticker]["id"];
 
             addSticker(packageId, stickerId);
         }

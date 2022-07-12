@@ -11,7 +11,7 @@ window.onload = function (e) {
 };
 
 function bool(data) {
-    return String(data).toLowerCase() === "true";
+    return data.toLowerCase() === "true";
 }
 
 function getLocalInt(_key, _default){
@@ -49,10 +49,14 @@ function getParam(name, url) {
 }
 
 function is404(_url){
-    var xhr;
-    xhr = new XMLHttpRequest();
-    xhr.open("HEAD", _url, false);
-    xhr.send(null);
+    try{
+        var xhr;
+        xhr = new XMLHttpRequest();
+        xhr.open("HEAD", _url, false);
+        xhr.send(null);
+    } catch (error) {
+        return true;
+    }
     return xhr.status == 404;
 }
 
@@ -222,5 +226,5 @@ function sendMessage(){
 }
 
 function setting(){
-    location = "/LINEAzLiff/setting.html";
+    location = "/setting.html";
 }

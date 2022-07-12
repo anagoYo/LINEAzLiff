@@ -18,7 +18,7 @@ function getLocalItem(_key){
 }
 
 function bool(data) {
-    return data.toLowerCase() === "true";
+    return String(data).toLowerCase() === "true";
 }
 
 var data;

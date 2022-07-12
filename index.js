@@ -49,11 +49,15 @@ function getParam(name, url) {
 }
 
 function is404(_url){
+    let xhr;
     try{
-        let xhr = new XMLHttpRequest();
+        xhr = new XMLHttpRequest();
         xhr.open("HEAD", _url, false);
         xhr.send(null);
     } catch (error) {
+        return true;
+    }
+    if(xhr == null){
         return true;
     }
     return xhr.status == 404;

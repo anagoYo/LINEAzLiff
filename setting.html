@@ -1,0 +1,80 @@
+<head>
+    <title>Azarasi Setting</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+</head>
+
+<body>
+
+    <p style="margin-bottom: 0; margin-top: 5; font-size: 30;">スタンプ</p>
+    <div id="sticker">
+        <p style="margin: 0;">スタンプの大きさ:</p>
+        <select id="sticker_size">
+            <option>xxs</option>
+            <option>xs</option>
+            <option>sm</option>
+            <option>md</option>
+            <option>lg</option>
+            <option>xl</option>
+            <option>xxl</option>
+            <option>3xl</option>
+            <option>4xl</option>
+            <option>5xl</option>
+            <option>full</option>
+        </select>
+
+        <p style="margin: 0;">バックグラウンドの色:</p>
+        <input id="sticker_backgroundColor" type="color" value="#FFFFFF">
+
+        <p style="margin: 0;">アニメーション:</p>
+        <input id="sticker_animated" type="checkbox">
+    </div>
+
+    <p style="margin-bottom: 0; margin-top: 5; font-size: 30;">メッセージ</p>
+    <div id="text">
+        <p style="margin: 0;">文字の大きさ:</p>
+        <select id="text_size">
+            <option>xxs</option>
+            <option>xs</option>
+            <option>sm</option>
+            <option>md</option>
+            <option>lg</option>
+            <option>xl</option>
+            <option>xxl</option>
+            <option>3xl</option>
+            <option>4xl</option>
+            <option>5xl</option>
+        </select>
+
+        <p style="margin: 0;">文字の色:</p>
+        <input id="text_textColor" type="color" value="#000000">
+
+        <p style="margin: 0;">バックグラウンドの色:</p>
+        <input id="text_backgroundColor" type="color" value="#FFFFFF">
+
+        <p style="margin: 0;">太文字:</p>
+        <input id="text_bold" type="checkbox">
+
+        <p style="margin: 0;">斜体:</p>
+        <input id="text_italic" type="checkbox">
+
+        <p style="margin: 0;">下線/取り消し線:</p>
+        <select id="text_decoration">
+            <option>none</option>
+            <option>下線</option>
+            <option>取り消し線</option>
+        </select>
+
+        <p style="margin: 0;">文字の位置:</p>
+        <select id="text_align">
+            <option>左</option>
+            <option>真ん中</option>
+            <option>右</option>
+        </select>
+    </div>
+
+    <br>
+
+    <button id="saveButton">すべて保存</button>
+    <button id="resetButton">リセット</button>
+    <script src="setting.js"></script>
+</body>

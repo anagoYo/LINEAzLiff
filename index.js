@@ -1,5 +1,3 @@
-import "Utils.js"
-
 window.onload = function (e) {
     liff.init({
         liffId: '1657284809-ew3YylaE'

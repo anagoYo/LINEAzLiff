@@ -50,8 +50,7 @@ function getParam(name, url) {
 
 function is404(_url){
     try{
-        let xhr;
-        xhr = new XMLHttpRequest();
+        let xhr = new XMLHttpRequest();
         xhr.open("HEAD", _url, false);
         xhr.send(null);
     } catch (error) {

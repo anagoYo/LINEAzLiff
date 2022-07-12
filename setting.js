@@ -13,10 +13,6 @@ const text_align = document.getElementById("text_align")
 const saveButton = document.getElementById("saveButton")
 const resetButton = document.getElementById("resetButton")
 
-function getLocalItem(_key){
-    return localStorage.getItem(_key);
-}
-
 function bool(data) {
     return String(data).toLowerCase() === "true";
 }

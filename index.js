@@ -11,7 +11,7 @@ window.onload = function (e) {
 };
 
 function bool(data) {
-    return String(data).toLowerCase() === "true";
+    return data.toLowerCase() === "true";
 }
 
 function getLocalInt(_key, _default){
@@ -145,7 +145,7 @@ function select(){
             img.src = "https://stickershop.line-scdn.net/products/0/0/1/"+packageId+"/android/stickers/"+stickerId+".png"
 
             img.onclick = function() {
-                share(null, packageId, img.id)
+                share(packageId, img.id)
             };
             document.getElementById("stickers").appendChild(img)
         }
